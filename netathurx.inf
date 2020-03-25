@@ -1,0 +1,456 @@
+; /****************************************************************************
+; * Copyright 2006 Atheros Communications Inc., all rights reserved.          *
+; * INF file for Atheros reference designs                                    *
+; ****************************************************************************/
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %ATHEROS%
+LayoutFiles   = layout.inf
+CatalogFile = athurextx.cat
+DriverVer   = 01/04/2010,2.0.0.32
+
+
+[Manufacturer]
+%ATHEROS%     = Atheros, NTamd64
+%NETGEAR%     = NETGEAR, NTamd64
+%DLINK%       = DLINK, NTamd64
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+
+[Atheros.NTamd64]
+; DisplayName               Section                 DeviceID
+; -----------               -------                 --------
+%ATHER.DeviceDesc.9271% = ATHER_DEV_9271.ndi,     USB\VID_0CF3&PID_9271
+%ATHER.DeviceDesc.7010% = ATHER_DEV_7010.ndi,     USB\VID_0CF3&PID_7010
+%ATHER.DeviceDesc.7015% = ATHER_DEV_7015.ndi,     USB\VID_0CF3&PID_7015
+%ATHER.DeviceDesc.1006% = ATHER_DEV_1006.ndi,     USB\VID_0CF3&PID_1006
+
+[NETGEAR.NTamd64]
+; DisplayName               Section                 DeviceID
+; -----------               -------                 --------
+%NTGR.DeviceDesc.9030%  = NTGR_DEV_9030.ndi,      USB\VID_0846&PID_9030
+
+[DLINK.NTamd64]
+; DisplayName               Section                 DeviceID
+; -----------               -------                 --------
+%DLINK.DeviceDesc.3A10%  = DLINK_DEV_3A10.ndi,    USB\VID_07D1&PID_3A10
+
+
+[ATHER_DEV_9271.ndi.NTamd64]
+Characteristics = 0x84
+BusType         = 15
+AddReg          = atheros.reg, 9271.reg, htDisableWepTkip.reg
+DelReg          = atheros.DelReg
+CopyFiles       = atheros.CopyFiles
+*IfType         = 71		; IF_TYPE_IEEE80211
+*MediaType      = 16		; NdisMediumNative802_11
+*PhysicalMediaType = 9		; NdisPhysicalMediumNative802_11
+
+[ATHER_DEV_9271.ndi.NTamd64.Services]
+AddService = athur, 2, atheros.Service, atheros.EventLog
+
+[ATHER_DEV_9271.ndi.NTamd64.HW]
+AddReg = atheros_os61.vwifi.reg
+
+[ATHER_DEV_7010.ndi.NTamd64]
+Characteristics = 0x84
+BusType         = 15
+AddReg          = atheros.reg, 7010.reg, htDisableWepTkip.reg
+DelReg          = atheros.DelReg
+CopyFiles       = atheros.CopyFiles
+*IfType         = 71		; IF_TYPE_IEEE80211
+*MediaType      = 16		; NdisMediumNative802_11
+*PhysicalMediaType = 9		; NdisPhysicalMediumNative802_11
+
+[ATHER_DEV_7010.ndi.NTamd64.Services]
+AddService = athur, 2, atheros.Service, atheros.EventLog
+
+[ATHER_DEV_7010.ndi.NTamd64.HW]
+AddReg = atheros_os61.vwifi.reg
+
+[ATHER_DEV_7015.ndi.NTamd64]
+Characteristics = 0x84
+BusType         = 15
+AddReg          = atheros.reg, 7010.reg, htDisableWepTkip.reg
+DelReg          = atheros.DelReg
+CopyFiles       = atheros.CopyFiles
+*IfType         = 71		; IF_TYPE_IEEE80211
+*MediaType      = 16		; NdisMediumNative802_11
+*PhysicalMediaType = 9		; NdisPhysicalMediumNative802_11
+
+[ATHER_DEV_7015.ndi.NTamd64.Services]
+AddService = athur, 2, atheros.Service, atheros.EventLog
+
+[ATHER_DEV_7015.ndi.NTamd64.HW]
+AddReg = atheros_os61.vwifi.reg
+
+[ATHER_DEV_1006.ndi.NTamd64]
+Characteristics = 0x84
+BusType         = 15
+AddReg          = atheros.reg, 5416.bgub.reg, 9271.reg
+DelReg          = atheros.DelReg
+CopyFiles       = atheros.CopyFiles
+*IfType         = 71		; IF_TYPE_IEEE80211
+*MediaType      = 16		; NdisMediumNative802_11
+*PhysicalMediaType = 9		; NdisPhysicalMediumNative802_11
+
+[ATHER_DEV_1006.ndi.NTamd64.Services]
+AddService = athur, 2, atheros.Service, atheros.EventLog
+
+[ATHER_DEV_1006.ndi.NTamd64.HW]
+AddReg = atheros_os61.vwifi.reg
+
+[NTGR_DEV_9030.ndi.NTamd64]
+Characteristics = 0x84
+BusType         = 15
+AddReg          = atheros.reg, NTGR.reg, 9271.reg
+DelReg          = atheros.DelReg
+CopyFiles       = atheros.CopyFiles
+*IfType         = 71		; IF_TYPE_IEEE80211
+*MediaType      = 16		; NdisMediumNative802_11
+*PhysicalMediaType = 9		; NdisPhysicalMediumNative802_11
+
+[NTGR_DEV_9030.ndi.NTamd64.HW]
+AddReg = atheros_os61.vwifi.reg
+
+[NTGR_DEV_9030.ndi.NTamd64.Services]
+AddService = athur, 2, atheros.Service, atheros.EventLog
+
+[DLINK_DEV_3A10.ndi.NTamd64]
+Characteristics = 0x84
+BusType         = 15
+AddReg          = atheros.reg, DLINK.reg, 9271.reg, htDisableWepTkip.reg
+DelReg          = atheros.DelReg
+CopyFiles       = atheros.CopyFiles
+*IfType         = 71		; IF_TYPE_IEEE80211
+*MediaType      = 16		; NdisMediumNative802_11
+*PhysicalMediaType = 9		; NdisPhysicalMediumNative802_11
+
+[DLINK_DEV_3A10.ndi.NTamd64.Services]
+AddService = athur, 2, atheros.Service, atheros.EventLog
+
+[DLINK_DEV_3A10.ndi.NTamd64.HW]
+AddReg = atheros_os61.vwifi.reg
+;;End of Others Section
+[atheros.reg]
+HKR, Ndi,                           Service,    0, "athur"
+HKR, Ndi\Interfaces,                UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,                LowerRange, 0, "wlan,ethernet,vwifi"
+HKR, Ndi\params\*ReceiveBuffers,    ParamDesc,  0, "%ReceiveBuffers%"
+HKR, Ndi\params\*ReceiveBuffers,    default,    0, "256"
+HKR, Ndi\params\*ReceiveBuffers,    min,        0, "1"
+HKR, Ndi\params\*ReceiveBuffers,    max,        0, "00000512"
+HKR, Ndi\params\*ReceiveBuffers,    step,       0, "1"
+HKR, Ndi\params\*ReceiveBuffers,    Base,       0, "10"
+HKR, Ndi\params\*ReceiveBuffers,    type,       0, "int"
+HKR, Ndi\params\*TransmitBuffers,   ParamDesc,  0, "%TransmitBuffers%"
+HKR, Ndi\params\*TransmitBuffers,   default,    0, "256"
+HKR, Ndi\params\*TransmitBuffers,   min,        0, "1"
+HKR, Ndi\params\*TransmitBuffers,   max,        0, "00000512"
+HKR, Ndi\params\*TransmitBuffers,   step,       0, "1"
+HKR, Ndi\params\*TransmitBuffers,   Base,       0, "10"
+HKR, Ndi\params\*TransmitBuffers,   type,       0, "int"
+HKR, Ndi\params\NetworkAddress,     ParamDesc,  0,  %NetworkAddress%
+HKR, Ndi\params\NetworkAddress,     default,    0,  ""
+HKR, Ndi\params\NetworkAddress,     LimitText,  0,  "12"
+HKR, Ndi\params\NetworkAddress,     UpperCase,  0,  "1"
+HKR, Ndi\params\NetworkAddress,     optional,   0,  "1"
+HKR, Ndi\params\NetworkAddress,     type,       0,  "edit"
+HKR, Ndi\params\shortPreamble,      ParamDesc,  0,  %shortPreamble%
+HKR, Ndi\params\shortPreamble,      Base,       0,  "10"
+HKR, Ndi\params\shortPreamble,      default,    0,  "1"
+HKR, Ndi\params\shortPreamble,      type,       0,  "enum"
+HKR, Ndi\params\shortPreamble\enum, "1",        0,  %shortPreambleEnable%
+HKR, Ndi\params\shortPreamble\enum, "0",        0,  %shortPreambleDisable%
+HKR, Ndi\params\scanTimeValid,      ParamDesc,  0,  %scanTimeValid%
+HKR, Ndi\params\scanTimeValid,      default,    0,  "60"
+HKR, Ndi\params\scanTimeValid,      min,        0,  "20"
+HKR, Ndi\params\scanTimeValid,      max,        0,  "120"
+HKR, Ndi\params\scanTimeValid,      step,       0,  "5"
+HKR, Ndi\params\scanTimeValid,      base,       0,  "10"
+HKR, Ndi\params\scanTimeValid,      type,       0,  "int"
+
+;/* Enable these if VLAN or 802.1p is to be enabled */
+;HKR, Ndi\Params\*PriorityVLANTag,  ParamDesc,  , %PriorityVLAN%
+;HKR, Ndi\Params\*PriorityVLANTag,  default,    , "3"
+;HKR, Ndi\Params\*PriorityVLANTag,  type,       , "enum"
+;HKR, Ndi\Params\*PriorityVLANTag\enum, 0,      , %PriorityVLANDisabled%
+;HKR, Ndi\Params\*PriorityVLANTag\enum, 1,      , %PriorityEnabled%
+;HKR, Ndi\Params\*PriorityVLANTag\enum, 2,      , %VLANEnabled%
+;HKR, Ndi\Params\*PriorityVLANTag\enum, 3,      , %PriorityVLANEnabled%
+
+HKR, ,                                  forceNormalSlotMrvl,             0x00002,  "1"
+HKR, ,                                  htAdhocEnable,                   0x00002,  "0"
+HKR, ,                                  wpsButtonGpio,                   0x00002,  "13"
+
+;/* Add for WAPI extension DLL */
+HKR,  Ndi\IHVExtensions, ExtensibilityDLL,     0,          "%%SystemRoot%%\system32\athExt.dll"
+HKR,  Ndi\IHVExtensions, UIExtensibilityCLSID, 0,          %WAPICLSID% 
+HKR,  Ndi\IHVExtensions, AdapterOUI,           0x00010001, 0x000000 
+
+[atheros.DelReg]
+HKR,,NetBand
+HKR,,ssid
+HKR,,ssid2
+HKR,,ssid3
+HKR,,prefBssid1
+HKR,,prefBssid2
+HKR,,prefBssid3
+HKR,,prefBssid4
+HKR,Ndi\Params\tpc
+HKR,,tpc
+HKR,Ndi\Params\authTypeUseOnly
+HKR,,authTypeUseOnly
+HKR,,AdHocBand
+HKR,,AwakeTimePerf
+HKR,,beaconInterval
+HKR,,bkScanEnable
+HKR,,bssType
+HKR,,ccode
+HKR,,clist
+HKR,,defaultKey
+HKR,,EncryptionAlg
+HKR,,FragThreshold
+HKR,,HwTxRetries
+HKR,,privacyInvoked
+HKR,,QoS
+HKR,,rateCtrlEnable
+HKR,,RTSThreshold
+HKR,,scanType
+HKR,,SwTxRetryScale
+HKR,,SmeEnable
+HKR,,aifs
+HKR,,cwmin
+HKR,Ndi\params,MapRegisters,0x2000
+HKR,,MapRegisters
+HKR,Ndi\params,radioEnable,0x2000
+HKR,Ndi\params,sleepMode,0x2000
+HKR,,sleepMode
+HKR,,transmitRateMax
+HKR, Ndi\params\*TransmitBuffers
+HKR,,*TransmitBuffers
+HKR,,rxChainMask
+HKR,,txChainMaskLegacy
+HKR,,rxChainMaskLegacy
+HKR,,rxChainDetect
+HKR,,rxChainDetectRef
+HKR,,rxChainDetectThreshA
+HKR,,rxChainDetectThreshG
+HKR,,rxChainDetectDeltaA
+HKR,,rxChainDetectDeltaG
+
+[7010.reg]
+HKR, , isMagpie,                        0x00002, "1"
+HKR, , gpioLedCustom,                   0x00002, "1"
+HKR, , gpioPinFunc0,                    0x00002, "12"
+HKR, , gpioPinFunc1,                    0x00002, "10"
+
+[htDisableWepTkip.reg]
+HKR, , htEnableWepTkip,                 0x00002, "0"
+
+[9271.reg]
+;HKR, , GreenTx,                          0, "0"
+
+;-----------------------------------------------------------------------------
+;;Customized Section
+[bandselect.reg]
+HKR, Ndi\params\NetBand,                ParamDesc,                      0,        %WirelessMode%
+HKR, Ndi\params\NetBand,                Base,                           0,        "10"
+HKR, Ndi\params\NetBand,                default,                        0,        "1647"
+HKR, Ndi\params\NetBand,                type,                           0,        "enum"
+HKR, Ndi\params\NetBand\enum,           "1647",                         0,        %Auto%
+HKR, Ndi\params\NetBand\enum,           "1603",                         0,        %5GOnly%
+HKR, Ndi\params\NetBand\enum,           "44",                           0,        %2GOnly%
+[adhocchannelselect.reg]
+HKR, Ndi\params\defaultIbssChannel,     ParamDesc,                      0,        %adhocchannel%
+HKR, Ndi\params\defaultIbssChannel,     default,                        0,        "10"
+HKR, Ndi\params\defaultIbssChannel,     min,                            0,        "1"
+HKR, Ndi\params\defaultIbssChannel,     max,                            0,        "11"
+HKR, Ndi\params\defaultIbssChannel,     step,                           0,        "1"
+HKR, Ndi\params\defaultIbssChannel,     base,                           0,        "10"
+HKR, Ndi\params\defaultIbssChannel,     type,                           0,        "int"
+
+[5416.bgub.reg]
+HKR, ,                                  NetBand,                        0x00002,  "12"
+
+[5416.bgnxb.reg]
+HKR, ,                                  NetBand,                        0x00002,  "26636"
+HKR, ,                                  wmodeselect,                    0x00002,  "26636"
+
+[5416.bandselect.reg]
+HKR, Ndi\params\NetBand,                ParamDesc,                      0,  %WirelessMode%
+HKR, Ndi\params\NetBand,                Base,                           0,  "10"
+HKR, Ndi\params\NetBand,                default,                        0,  "130671"
+HKR, Ndi\params\NetBand,                type,                           0,  "enum"
+HKR, Ndi\params\NetBand\enum,           "130671",                       0,  %Auto%
+HKR, Ndi\params\NetBand\enum,           "104003",                       0,  %5GOnly%
+HKR, Ndi\params\NetBand\enum,           "26668",                        0,  %2GOnly%
+[NTGR.reg]
+HKR, ,                                  ignore11dBeacon,                0, 1
+HKR, ,                                  gpioLedCustom,                  0, 8
+HKR, ,                                  gpioPinFunc0,                   0, 15
+HKR, ,                                  swapDefaultLED,                 0, 1
+HKR, ,                                  GreenTx,                        0, 15
+HKR, ,                                  htEnableWepTkip,          0x00002, "3"
+HKR, ,                                  htEnableWepTkipAgg,       0x00002, "0"
+
+[DLINK.reg]
+HKR, ,                                  gpioLedCustom,   0, 1
+HKR, ,                                  gpioPinFunc0,    0, 15
+HKR, ,                                  swapDefaultLED,  0, 1
+;;End of Customized Section
+
+[atheros.Service]
+DisplayName     = %ATHR.Service.DispName%
+ServiceType     = 1         ;SERVICE_KERNEL_DRIVER
+StartType       = 3         ;SERVICE_DEMAND_START
+ErrorControl    = 1         ;SERVICE_ERROR_NORMAL
+ServiceBinary   = %12%\athurx.sys
+LoadOrderGroup  = NDIS
+
+[atheros.EventLog]
+AddReg = atheros.AddEventLog.reg
+
+[atheros.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+
+[atheros.CopyFiles]
+athurx.sys,,,2
+
+[SourceDisksNames]
+1 = %DiskDescription%,athurx.sys,,
+
+[SourceDisksFiles]
+athurx.sys = 1,,
+
+[DestinationDirs]
+atheros.CopyFiles            = 12
+DefaultDestDirs              = 11
+
+;-------------- WDF Coinstaller installation
+[DestinationDirs]
+CoInstaller_CopyFiles = 11
+
+[athurx.Dev.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+wdfcoinstaller01005.dll
+
+[SourceDisksFiles]
+wdfcoinstaller01005.dll=1 ; make sure the number matches with SourceDisksNames
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "wdfcoinstaller01005.dll,WdfCoInstaller"
+
+[athurx.Dev.NT.Wdf]
+KmdfService = athurx, athurx_wdfsect
+
+[athurx_wdfsect]
+KmdfLibraryVersion = 1.5
+
+;; Adds the VWiFi PNP filter
+[atheros_os61.vwifi.reg]
+HKR,,"UpperFilters",0x00010000,"vwifibus"
+
+[Strings]
+Msft                         = "Microsoft"
+Atheros                      = "Atheros Communications Inc."
+NETGEAR                      = "Netgear Inc."
+DLINK                        = "D-Link"
+ATHR.Service.DispName        = "Atheros AR9271 Wireless Network Adapter Service"
+ATHR7010.Service.DispName    = "Atheros AR7010 Wireless Network Adapter Service"
+ATHR7015.Service.DispName    = "Atheros AR7015 Wireless Network Adapter Service"
+DiskDescription              = "Atheros Sample Driver Disk 1"
+TransmitBuffers              = "Transmit Buffers"
+ReceiveBuffers               = "Receive Buffers"
+NetworkAddress               = "Network Address"
+scanTimeValid                = "Scan Valid Interval"
+shortPreamble                = "802.11b Preamble"
+shortPreambleEnable          = "Long and Short"
+shortPreambleDisable         = "Long only"
+rssiThrHigh                  = "RSSI Threshold"
+rssiThrHighNormal            = "Normal"
+rssiThrHighMin               = "Min"
+;radioEnable                  = "Radio On/Off"
+;radioEnableOn                = "On"
+;radioEnableOff               = "Off"
+scanTime                     = "Roam Time (sec)"
+roamRssiA                    = "Roam Time Threshold (db)"
+WirelessMode                 = "Wireless Mode Selection"
+adhocchannel                 = "Adhoc channel Selection"
+bkScanEnable                 = "BackgroundScan On/Off"
+bkScanEnableOn               = "On"
+bkScanEnableOff              = "Off"
+radioEnable                  = "Radio On/Off"
+radioEnableOn                = "On"
+radioEnableOff               = "Off"
+roamRssi11A                  = "roamRssiA"
+roamRssi11B                  = "roamRssiB"
+roamRssi11BOnly              = "roamRssiBOnly"
+roamRateA                    = "roamRateA"
+roamRateA6M                  = " 6Mbps"
+roamRateA9M                  = " 9Mbps"
+roamRateA12M                 = "12Mbps"
+roamRateA18M                 = "18Mbps"
+roamRateA24M                 = "24Mbps"
+roamRateA36M                 = "36Mbps"
+roamRateA48M                 = "48Mbps"
+roamRateA54M                 = "54Mbps"
+roamRateBOnly                = "roamRateBOnly"
+roamRateBOnly1M              = " 1Mbps"
+roamRateBOnly2M              = " 2Mbps"
+roamRateBOnly5M              = " 5Mbps"
+roamRateBOnly11M             = "11Mbps"
+roamRateB                    = "roamRateB"
+roamRateB1M                  = " 1Mbps"
+roamRateB2M                  = " 2Mbps"
+roamRateB5M                  = " 5Mbps"
+roamRateB6M                  = " 6Mbps"
+roamRateB9M                  = " 9Mbps"
+roamRateB11M                 = "11Mbps"
+pcieAspm                     = "pcieAspm"
+pcieAspmOff                  = "L0s Off, L1 Off"
+pcieAspmL0sOn                = "L0s On,  L1 Off"
+pcieAspmL1On                 = "L0s Off, L1 On"
+pcieAspmL0sandL1On           = "L0s On,  L1 On"
+wModeSelect                  = "Wireless Mode"
+wModeSelect11bonly           = "11b only"
+wModeSelect11nbg             = "11n(2.4GHz) and g and b"
+wModeSelect11na              = "11n(5GHz) and a"
+wModeSelect11abgn            = "11abgn"
+wModeLegacy11a               = "11a only"
+wModeLegacy11bonly           = "11b only"
+wModeLegacy11bg              = "11g and 11b"
+wModeLegacy11abg             = "11abg"
+antennaSwitch                = "AntennaSwitch"
+antennaSwitchAuto            = "Auto"
+antennaSwitchA               = "Antenna A"
+antennaSwitchB               = "Antenna B"
+Auto			     = "Auto"
+5GOnly	                     = "5Ghz Only"
+2GOnly	                     = "2Ghz Only"
+11DModeSwitch		     = "11d Mode Switch"
+Enable			     = "Enable"
+Disable                      = "Disable"
+PowerSaveMode		     = "Power Save Mode"
+Off			     = "Off"
+Maximum                      = "Maximum"
+Normal                       = "Normal"
+802_11d                      = "802.11d"
+ATHER.DeviceDesc.9271        = "Atheros AR9271 Wireless Network Adapter"
+ATHER.DeviceDesc.7010        = "Atheros AR7010 Wireless Network Adapter"
+ATHER.DeviceDesc.7015        = "Atheros AR7015 Wireless Network Adapter"
+ATHER.DeviceDesc.1006        = "Atheros 11G USB Wireless Network Adapter"
+NTGR.DeviceDesc.9030         = "NETGEAR WNA1100 Wireless-N 150 USB Adapter"
+DLINK.DeviceDesc.3A10        = "High-Power Wireless 150 USB adapter"
+
+WAPICLSID                    = "{151F7202-8218-4E8D-A685-30F1C62DD583}"
